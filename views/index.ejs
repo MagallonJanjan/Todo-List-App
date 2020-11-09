@@ -75,7 +75,7 @@
                     <td><%=data[i].description%></td>
                     <td><%=data[i].date%></td>
             <td class="button">
-                <button type=submit class="btn btn-danger">Remove</button>
+                <button type=submit class="btn btn-danger" onclick="SomeDeleteRowFunction()">Remove</button>
             </td>
           </tr>
           <%}%>
@@ -83,11 +83,15 @@
       </table>
       <script>
 
-          $(document).ready(function(){
-              $('.btn').click(function(){
-                  $('#data').remove();
-              });
+        function SomeDeleteRowFunction()
+        {
+            // event.target will be the input element.
+            var td = event.target.parentNode; 
+            var tr = td.parentNode; // the row to be removed
+             tr.parentNode.removeChild(tr);
+        }
 
+          $(document).ready(function(){
                 $( function() {
                     $( "#date" ).datepicker();
                 });
